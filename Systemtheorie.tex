@@ -6,7 +6,6 @@
 \usepackage{latexnew}
 
 
-
 % Dokumentbeginn
 % ======================================================================
 \begin{document}
@@ -104,6 +103,7 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 	Allgemeine Erregung: $x(t) = x_0\e^{\frac{t_0-t}{\tau}}+\int_{t_0}^t{\frac{1}{\tau}v(t')\e^{\frac{t'_0-t'}{\tau}}} $ \\
 	zero-input-response: Erster Summand\\
 	zero-state-response: Zweiter Summand\\
+	mit $u_{C,\infty}=U_0$ bzw. $i_{L,\infty}=I_0$\\
 	\textbf{IV. Dynamischer Pfad}\\
 \tablebox{
 	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}ll@{}} \trule
@@ -115,7 +115,12 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 	\end{tabular*}
 }
 \textbf{Toter Punkt:} kein GGP, aber Pfad kann nicht fortgesetzt werden \ra Sprung der nicht stetigen Größe ($i_C$ oder $u_L$)\\
-\textbf{Gleichgewichtspunkt (GGP):}
+\textbf{Gleichgewichtspunkt (GGP):}\\
+	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}ll@{}}
+		Kapazität & Induktivität\\ \mrule
+		$\dd{t}u_F = 0 \ra i_F = 0$ & $\dd{t}i_F = 0 \ra u_F = 0$\\
+		\mrule	
+	\end{tabular*}
 \begin{itemize}
 	\item[a)] stabil, falls der Pfad nicht aus diesem Punkt herausläuft
 	\item[b)] instabil, falls der Pfad aus dem Punkt herausläuft
@@ -127,8 +132,50 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 %TODO Bilder von Graph
 \subsection{Instabile Schaltung ($\tau < 0$)}
 %TODO Bilder von Graph
-
-
+\subsection{Dynamischer Pfad}
+	
+\section{Schaltungen zweiten Grades}
+	\subsection{Differentialgleichungssystem aufstellen}
+		\textbf{I. Schaltung umzeichnen}
+		Zeichne die Schaltung so um, dass beide Reaktanzen an den äußeren Seiten sind.
+		\textbf{II. Matrix aufstellen}
+		(Quellen vernachlässigen)
+		\begin{itemize}
+		\item[a)] zwei Kondensatoren: Widerstandsmatrix $\ma R$
+		\item[b)] zwei Spulen: Leitwertsmatrix $\ma G$
+		\item[c)] Kondensator (Tor 1) und Spule (Tor 2): Inverse Hybridmatrix $\ma{H'}$
+		\end{itemize}
+		
+		\textbf{III. Quellenvektor aufstellen}
+		
+		\textbf{IV. Differentialgleichungssystem aufstellen}
+	\subsection{Phasenportraits}
+		\textbf{I. Bestimmung der Eigenwerte und Eigenvektoren}\\
+		\textbf{II. Bestimmung des Fixpunktes}\\
+		$\ma A\v x + \ma B\v x = 0$\\
+		\textbf{III. Art des Phasenportraits}\\
+		%TODO Einfügen der Arten des Phasenportraits\\
+		\textbf{IV. Einzeichnen von Fixpunkt und Eigenvektoren}\\
+		Die Eigenvektoren werden ausgehend vom Fixpunkt eingezeichnet. Bei konjugierten Eigenvektoren zeichnet man den Realteil und den Imaginärteil.
+	\subsection{Lösung der Zustandsgleichungen}
+		\subsubsection{Homogener Fall}
+		Transformation autonom (konst. Erregung) $\ra$ homogener Fall mit: $x' = x - x_\infty$.\\
+		$\lambda_1 \neq \lambda_2$: $c_1\e^{\lambda_1t}\v q_1 + c_2\e^{\lambda_2t}\v q_2$\\
+		$\lambda_1 = \lambda_2 = \lambda$: $\e^{\lambda t}(\ma 1 + (\ma A -\lambda \ma 1)t) [q_1 q_2]^T$\\
+		komplexe Eigenwerte: $c_1 \e^{\alpha t}(\cos{(\beta t)}\v q_{reell} - \sin{(\beta t)}\v q_{imag} + c_2\e^{\alpha t}(\sin{(\beta t)}\v q_{reell} - \cos{(\beta t)}\v q_{imag})$\\
+		%komplexe Eigenwerte: $c_1 \e^{\alpha t}( \cos{\beta t} \v{q_{reell}} - \sin{\beta t}\v q_{imaginär}) + c_2\e^{\alpha t}(\sin{\beta t}\v q_{reell} - \cos{\beta t}\v q_{imaginär})$
+		\subsection{Transformation auf Normalform}
+		Gegeben: $\dot{x} = \ma A\v x + \ma B\v v$\\
+		Normalform: $\dot{x'} = \ma{A'}\v{x'} + \v{v'}$\\
+		Eigenwerte $\lambda_1, \lambda_2$ und Eigenvektoren $\v q_1, \v q_2$ berechnen\\
+		$\ma Q =  \mat{\v q_1 & \v q_2 }$\\
+		$\ma{A'} = \ma Q^{-1}\ma A\ma Q = \mat{\lambda_1 & 0 \\ 0 & \lambda_2 }, \v{x'} = \ma Q^{-1}\v x$, $\v{v'} = \ma Q^{-1}\ma B\v v$.  
+		\subsection{Transformation auf reellwertige Normalform}
+		Gegeben: $\lambda_{1/2} = \alpha \pm \beta j, \v q_r, \v q_i$\\
+		$A_{reell} =  \mat{\alpha & - \beta \\ \beta & \alpha}$\\
+		$Q_{reell} = \mat{ q_r & - q_i}$\\
+		$x_{reell} = \ma Q_{reell}^{-1} \e^{\Delta t}\ma Q_{reell}$\\
+		$\dot{x}_{reell} (t) = A_{reell}x_{reell}(t)$\\ 
 \end{multicols*}
 \end{document}
 

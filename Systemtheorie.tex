@@ -136,8 +136,8 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 	
 \section{Schaltungen zweiten Grades}
 	\subsection{Differentialgleichungssystem aufstellen}
-		\textbf{I. Schaltung umzeichnen}
-		Zeichne die Schaltung so um, dass beide Reaktanzen an den äußeren Seiten sind.
+		\textbf{I. Schaltung umzeichnen}\\
+		Zeichne die Schaltung so um, dass beide Reaktanzen an den äußeren Seiten sind.\\
 		\textbf{II. Matrix aufstellen}
 		(Quellen vernachlässigen)
 		\begin{itemize}
@@ -150,20 +150,25 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 		
 		\textbf{IV. Differentialgleichungssystem aufstellen}
 	\subsection{Phasenportraits}
+	\subsubsection{Zeichnen des Phasenportraits}
 		\textbf{I. Bestimmung der Eigenwerte und Eigenvektoren}\\
 		\textbf{II. Bestimmung des Fixpunktes}\\
 		$\ma A\v x + \ma B\v x = 0$\\
 		\textbf{III. Art des Phasenportraits}\\
 		%TODO Einfügen der Arten des Phasenportraits\\
 		\textbf{IV. Einzeichnen von Fixpunkt und Eigenvektoren}\\
-		Die Eigenvektoren werden ausgehend vom Fixpunkt eingezeichnet. Bei konjugierten Eigenvektoren zeichnet man den Realteil und den Imaginärteil.
+		Die Eigenvektoren werden ausgehend vom Fixpunkt eingezeichnet. Bei konjugierten Eigenvektoren zeichnet man den Realteil und den negierten Imaginärteil.\\
+		\subsubsection{Isokline}
+		Kurve, auf der die Steigung der Trajektorie konstant ist.\\
+		$m = \fr {\dot x_1}{\dot x_2}$, falls $m = 0: \dot x_1 = 0$ bzw. $m = \infty: \dot x_2 = 0$
+		\subsubsection{Separatrix}
+		Kurve, die Gebiete mit verschiedenem Langzeitverhalten trennt.
 	\subsection{Lösung der Zustandsgleichungen}
 		\subsubsection{Homogener Fall}
 		Transformation autonom (konst. Erregung) $\ra$ homogener Fall mit: $x' = x - x_\infty$.\\
 		$\lambda_1 \neq \lambda_2$: $c_1\e^{\lambda_1t}\v q_1 + c_2\e^{\lambda_2t}\v q_2$\\
 		$\lambda_1 = \lambda_2 = \lambda$: $\e^{\lambda t}(\ma 1 + (\ma A -\lambda \ma 1)t) [q_1 q_2]^T$\\
 		komplexe Eigenwerte: $c_1 \e^{\alpha t}(\cos{(\beta t)}\v q_{reell} - \sin{(\beta t)}\v q_{imag} + c_2\e^{\alpha t}(\sin{(\beta t)}\v q_{reell} - \cos{(\beta t)}\v q_{imag})$\\
-		%komplexe Eigenwerte: $c_1 \e^{\alpha t}( \cos{\beta t} \v{q_{reell}} - \sin{\beta t}\v q_{imaginär}) + c_2\e^{\alpha t}(\sin{\beta t}\v q_{reell} - \cos{\beta t}\v q_{imaginär})$
 		\subsection{Transformation auf Normalform}
 		Gegeben: $\dot{x} = \ma A\v x + \ma B\v v$\\
 		Normalform: $\dot{x'} = \ma{A'}\v{x'} + \v{v'}$\\
@@ -176,6 +181,20 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 		$Q_{reell} = \mat{ q_r & - q_i}$\\
 		$x_{reell} = \ma Q_{reell}^{-1} \e^{\Delta t}\ma Q_{reell}$\\
 		$\dot{x}_{reell} (t) = A_{reell}x_{reell}(t)$\\ 
+		\subsection{Zeitverlauf der Zustandsvariablen}
+		Eigenwerte: $\lambda_i = \alpha + j\beta$ mit $\alpha$: Dämpfung, $\beta$: Schwingung\\
+		\textbf{Stabilität:} stabil, falls $\alpha < 0$, sonst instabil\\
+		Schwingung mit Kreisfrequenz $\omega = \beta$\\
+		\tablebox{		
+		\begin{tabular*}{\columnwidth}{l@{\extracolsep\fill}|l} \ctrule
+		%TODO Beispielgraph
+		Fall & Schwingungsart \\ \cmrule
+		$\alpha = 0, \beta \neq 0$ & ungedämpfte Schwingung\\
+		$\alpha < 0, \beta \neq 0$ & schwach gedämpfte Schwingung\\
+		$\lambda_1 = \lambda_2 < 0, \beta = 0$ \quad & aperiodischer Grenzfall\\
+		$\lambda_1 \neq \lambda_2, \beta = 0$ & stark gedämpfte Schwingung\\ \cbrule
+		\end{tabular*}
+		} 
 \section{Nichtlineare Schaltungen}
 	\begin{enumerate}
 		\item Alle Fixpunkte bestimmen $\v f(x_\infty) \stackrel{!}{=} \v 0$
@@ -184,14 +203,24 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 		\item Überprüfen des \textbf{Satzes von Hartmann/Grobmann}: \\Für alle Eigenwerte gilt $Re\{\lambda_i\} \neq 0$
 		\item Phasenportrait zeichnen (lokale Phasenportraits stetig verbinden)
 	\end{enumerate}
+\subsection{Energiefunktion}
+Eigenschaften: stetig, lokal nicht konstant, auf jeder Trajektorie konstant\\
+Schaltung ist \textbf{konservativ} $\Leftrightarrow \dot E = 0$\\
+Erweiterung des Satzes von Hartmann/Grobmann: Jacobimatrix hat nur imaginäre EW und Schaltung ist konservativ $\Leftrightarrow$ GGP ist Wirbelpunkt\\
+\subsection{Oszillatoren}
+%TODO Bild von Schaltung und Phasenportrait
+Schaltung mit periodischem Verlauf der Zustandsgrößen\\
+Voraussetzung: nichtlinear, nur ein Fixpunkt (instabil)
+%TODO Relaxationsoszi, fast-harmonischer Oszi
 \section{Komplexe Wechselstromrechnung}
-Vorraussetzung: lineares, eingeschwungenes System mit sinusförmiger Erregung $x(t) = \hat x \cdot \cos(\omega t + \varphi)$\\
+\textbf{Vorraussetzung:} lineares, eingeschwungenes System mit sinusförmiger Erregung $x(t) = A_m \cdot \cos(\omega t + \phi)$\\
 \sectionbox{
 \subsection{Komplexe Zeigergrößen}
 \emphbox{
 	\begin{tabular}{ll}
 	\textbf{Zeitfunktion} & $a(t) = A_m \cdot\cos(\omega t+\phi)$\\
-	\textbf{Zeiger} & $A = \alpha + i\beta = A_m \cdot e^{i\phi} = A_m \cdot (\cos \phi+j\sin \phi)$\\
+	\textbf{Zeiger} & $A = \alpha + i\beta = A_m \cdot e^{i\phi}$\\
+	&  $=A_m \cdot (\cos \phi+j\sin \phi)$\\
 	\textbf{Maximum} & $A_m = |A| = \sqrt{\alpha^2+\beta^2} = \sqrt{AA^*}$\\
 	\textbf{Phase} & $\phi = \begin{cases}
 	\arctan\frac{\beta}{\alpha}&\alpha>0\\
@@ -212,8 +241,68 @@ Vorraussetzung: lineares, eingeschwungenes System mit sinusförmiger Erregung $x
 	\end{tabular*} 
 	}
 }
-\subsection{Übertragungsfunktionen}
-$H(j\omega ) = \fr{\text{Ausgang}}{\text{Eingang}}$
+\sectionbox{
+	\subsection{Komplexe Leistungsrechnung}
+	$U_{\text{eff}} = \frac{1}{\sqrt{2}}U_m$\quad
+	$I_{\text{eff}} = \frac{1}{\sqrt{2}}I_m$\\
+	\textbf{Momentanleistung}: $p(t) = u(t)i(t)$\\
+	\textbf{Energie einer Periode}: $E=\int_0^Tu(t)i(t)dt$\\
+	\textbf{Leistungsmittelwert}: $P_w = \frac{1}{T} \int_0^T u(t)i(t)dt$\\
+	\textbf{Komplexe Leistung}: $P = \frac{1}{2}UI^* = \frac{1}{2}U_m\cdot e^{j\phi_u}\cdot I_m\cdot e^{-j\phi_i} = U_{\text{eff}}\cdot I_{\text{eff}}\cdot e^{j(\phi_u-\phi_i)}$\\
+	\textbf{Scheinleistung}: $S = |P|$\\
+	\textbf{Wirkleistung}: $P_w = Re{P}$\\
+	\textbf{Blindleistung}: $P_B = Im{P}$
+}
+\subsection{Übertragungsfunktion}
+$H(j\omega ) = \fr{\text{Ausgang}}{\text{Eingang}}$\\
+Nullstellen des Ausgangs werden als $p_{0,i}$ bezeichnet\\
+Nullstellen des Eingangs werden als $p_{\infty,i}$ bezeichnet\\
+Polstellen von $H(j\omega)$ sind die Eigenwerte der Systemmatrix\\
+\textbf{Stabilität:} Re$\{p_{\infty,i}\} < 0$ \quad $\forall i$\\
+\subsubsection{Schwingkreis}
+%TODO Resonanz, Güte
+\subsection{Laplace-Transformation}
+Für kausale Funktionen mit $f(t) = 0$ für $t < 0$:\\
+$F(p) = \mathcal L\{f(t)\} = \int_0^\infty f(t) \e^{-pt}dt$\\
+Rücktransformation: \\
+$f(t) = \mathcal L^{-1}\{F(p)\} = \fr{1}{2\pi j}\int_{\gamma-j\infty}^{\gamma+j\infty} F(p) \e^{-pt}dt$\\
+\subsubsection{Rechenregeln}
+\begin{itemize}
+	\item Linearität: $\mathcal L\{\alpha f(t) + \beta g(t)\} = \alpha F(p) + \beta G(p)$
+	\item Differentiationssatz: $\mathcal L\{\dot f(t)\} = pF(p) - f(0)$
+	\item Faltung: $\mathcal L\{(a * b)(t)\} = A(p)B(p)$
+\end{itemize}
+\subsubsection{Wichte Laplace-Transformationen}
+\begin{itemize}
+	\item $\mathcal L\{\alpha\e^{\beta t}\} = \fr{\alpha}{p-\beta}$
+	\item $\mathcal L\{\e^{\ma At}\} = \fr{1}{p\ma 1 - \ma A}$
+\end{itemize}
+Allgemeine Lösung im Frequenzraum:\\
+$x(p) = \fr{1}{p\ma 1-\ma A}x_0 + \fr{1}{p\ma 1-\ma A}bV(p)$\\
+$x(t) = x(0)\e^{\ma At} + \int_0^t \e^{\ma A(t-t')}v(t')b dt'$
+\section{Bodediagramm und Ortskurve}
+Darstellung einer Schaltung in Abhängigkeit der Frequenz\\
+$H(j\omega) = \abs{H(j\omega)} \exp (j\angle H(j\omega))$\\
+$\phi (\omega) = \angle H(j\omega) = \begin{cases}
+	\arctan\frac{Im\{H(j\omega)\}}{Re\{H(j\omega)\}}& $für$ Re\{H(j\omega)\} \geq 0\\
+	\arctan\frac{Im\{H(j\omega)\}}{Re\{H(j\omega)\}}+\pi& $für$ Re\{H(j\omega)\} < 0\\
+	\end{cases}$\\
+logarithmierte Darstellung des Betrages: $v(\omega) = 20 \log_{10} \abs{H(j\omega)}$\\
+\subsection{Bodediagramm}
+%TODO Beispiele?
+\begin{enumerate}
+	\item Übertragungsfunktion faktorisieren
+	\item Phasen und Beträge aufaddieren
+	\item Separates Zeichnen des Betrages $v(\omega)$ und der Phase $\phi(\omega)$ in zwei Diagramme
+\end{enumerate} 
+\subsection{Ortskurve}
+\begin{enumerate}
+	\item Bestimmung von diversen Werten der Übertragungsfunktion
+	\item Eintragen in der komplexen Ebene
+	\item Punkte stetig verbinden
+\end{enumerate}
+\subsection{Filtertypen}
+%TODO Zeichnung bzw. Erklärung?
+
 \end{multicols*}
 \end{document}
-

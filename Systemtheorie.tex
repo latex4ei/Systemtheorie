@@ -124,7 +124,7 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 \begin{itemize}
 	\item[a)] stabil, falls der Pfad nicht aus diesem Punkt herausläuft
 	\item[b)] instabil, falls der Pfad aus dem Punkt herausläuft
-	\item[c)] virtuell, falls der Pfad in einen toten Punkt läuft auf dem verlängertem Pfad auf der Achse
+	\item[c)] virtuell, falls der Pfad in einen toten Punkt auf dem verlängertem Pfad auf der Achse läuft
 \end{itemize}
 }
 
@@ -257,7 +257,7 @@ Voraussetzung: nichtlinear, nur ein Fixpunkt (instabil)
 $H(j\omega ) = \fr{\text{Ausgang}}{\text{Eingang}}$\\
 Nullstellen des Ausgangs werden als $p_{0,i}$ bezeichnet\\
 Nullstellen des Eingangs werden als $p_{\infty,i}$ bezeichnet\\
-Polstellen von $H(j\omega)$ sind die Eigenwerte der Systemmatrix\\
+Polstellen $p_{\infty, i}$ von $H(j\omega)$ sind die Eigenwerte der Systemmatrix\\
 \textbf{Stabilität:} Re$\{p_{\infty,i}\} < 0$ \quad $\forall i$\\
 \subsubsection{Schwingkreis}
 %TODO Resonanz, Güte
@@ -272,7 +272,7 @@ $f(t) = \mathcal L^{-1}\{F(p)\} = \fr{1}{2\pi j}\int_{\gamma-j\infty}^{\gamma+j\
 	\item Differentiationssatz: $\mathcal L\{\dot f(t)\} = pF(p) - f(0)$
 	\item Faltung: $\mathcal L\{(a * b)(t)\} = A(p)B(p)$
 \end{itemize}
-\subsubsection{Wichte Laplace-Transformationen}
+\subsubsection{Wichtige Laplace-Transformationen}
 \begin{itemize}
 	\item $\mathcal L\{\alpha\e^{\beta t}\} = \fr{\alpha}{p-\beta}$
 	\item $\mathcal L\{\e^{\ma At}\} = \fr{1}{p\ma 1 - \ma A}$
@@ -284,15 +284,15 @@ $x(t) = x(0)\e^{\ma At} + \int_0^t \e^{\ma A(t-t')}v(t')b dt'$
 Darstellung einer Schaltung in Abhängigkeit der Frequenz\\
 $H(j\omega) = \abs{H(j\omega)} \exp (j\angle H(j\omega))$\\
 $\phi (\omega) = \angle H(j\omega) = \begin{cases}
-	\arctan\frac{Im\{H(j\omega)\}}{Re\{H(j\omega)\}}& $für$ Re\{H(j\omega)\} \geq 0\\
-	\arctan\frac{Im\{H(j\omega)\}}{Re\{H(j\omega)\}}+\pi& $für$ Re\{H(j\omega)\} < 0\\
+	\arctan\frac{\text{Im}\{H(j\omega)\}}{\text{Re}\{H(j\omega)\}}& $für $\text{Re}\{H(j\omega)\} \geq 0\\
+	\arctan\frac{\text{Im}\{H(j\omega)\}}{\text{Re}\{H(j\omega)\}}+\pi& $für $\text{Re}\{H(j\omega)\} < 0\\
 	\end{cases}$\\
 logarithmierte Darstellung des Betrages: $v(\omega) = 20 \log_{10} \abs{H(j\omega)}$\\
 \subsection{Bodediagramm}
 %TODO Beispiele?
 \begin{enumerate}
 	\item Übertragungsfunktion faktorisieren
-	\item Phasen und Beträge aufaddieren
+	\item Phasen und logarithmierte Beträge der Faktoren aufaddieren
 	\item Separates Zeichnen des Betrages $v(\omega)$ und der Phase $\phi(\omega)$ in zwei Diagramme
 \end{enumerate} 
 \subsection{Ortskurve}

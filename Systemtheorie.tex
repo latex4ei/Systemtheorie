@@ -90,7 +90,8 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 	\begin{tabular*}{\columnwidth}{@{\extracolsep\fill}l|ll@{}} \trule
 	& Kapazität & Induktivität \\ \mrule
 	ESB-Typ & Helmholtz-Thévinin & Mayer-Norton\\
-	%TODO Bild einfügen :)
+	&\includegraphics[width=.3\linewidth]{img/helmholtz-thevenin}&
+	\includegraphics[width=.3\linewidth]{img/mayer-norton}\\
 	Zustandsgröße & $x(t) = u_C(t)$ & $x(t) = i_L(t)$\\
 	Zeitkonstante & $\tau = RC$ & $\tau = GL$\\
 		\brule
@@ -129,9 +130,9 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 }
 
 \subsection{Stabile Schaltung ($\tau > 0$)}
-%TODO Bilder von Graph
+\includegraphics[width=.8\linewidth]{img/graph-stabil}
 \subsection{Instabile Schaltung ($\tau < 0$)}
-%TODO Bilder von Graph
+\includegraphics[width=.8\linewidth]{img/graph-instabil}
 \subsection{Dynamischer Pfad}
 	
 \section{Schaltungen zweiten Grades}
@@ -151,11 +152,24 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 		\textbf{IV. Differentialgleichungssystem aufstellen}
 	\subsection{Phasenportraits}
 	\subsubsection{Zeichnen des Phasenportraits}
-		\textbf{I. Bestimmung der Eigenwerte und Eigenvektoren}\\
+		\textbf{I. Bestimmung der Eigenwerte $\lambda_i$ und Eigenvektoren $q_i$}\\
+		%TODO q_r und q_i
 		\textbf{II. Bestimmung des Fixpunktes}\\
 		$\ma A\v x + \ma B\v x = 0$\\
 		\textbf{III. Art des Phasenportraits}\\
-		%TODO Einfügen der Arten des Phasenportraits\\
+		\textbf{Strudelpunkt}\\
+		$\lambda_{1/2} = \alpha \pm \beta j$, $\alpha \neq 0$: Je nach $\sgn(\alpha)$ (in-)stabiler Strudel in Drehrichtung von $q_r$ ($\xi_{\text{reel}1}$) nach $-q_i$ ($\xi_{\text{reel}2}$)\\
+		\includegraphics[width=.7\linewidth]{phase-strudel}\\
+		\textbf{Wirbelpunkt}\\
+		$\lambda_{1/2} = \pm \beta j$: Wirbel in Drehrichtung von $q_r$ ($\xi_{\text{reel}1}$) nach $-q_i$ ($\xi_{\text{reel}2}$)\\
+		\includegraphics[width=.7\linewidth]{phase-wirbel}\\
+		\textbf{Knotenpunkt}\\
+		$\lambda_{1,2} < 0, |\lambda_1| < |\lambda_2|$: Trajektorien von Richtung (Eigenvektor) des schnelleren Eigenwerts ($q_2, \xi_2$) schmiegen sich an an Richtung des langsameren Eigenwerts ($q_1, \xi_1$).\\
+		\includegraphics[width=.7\linewidth]{phase-knoten}\\
+		\textbf{Sattelpunkt}\\
+		$\lambda_1 < 0, \lambda_2 > 0$: Zwei Geraden in Eigenrichtungen, von stabiler Richtung zu GGP, zu instabiler Richtung. Restliche Trajektorien Hyperbeln mit Geraden als Asymptoten.\\
+		\includegraphics[width=.7\linewidth]{phase-sattel}\\
+		%TODO degradierte Phasenportraits?
 		\textbf{IV. Einzeichnen von Fixpunkt und Eigenvektoren}\\
 		Die Eigenvektoren werden ausgehend vom Fixpunkt eingezeichnet. Bei konjugierten Eigenvektoren zeichnet man den Realteil und den negierten Imaginärteil.\\
 		\subsubsection{Isokline}

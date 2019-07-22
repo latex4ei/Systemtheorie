@@ -304,5 +304,29 @@ logarithmierte Darstellung des Betrages: $v(\omega) = 20 \log_{10} \abs{H(j\omeg
 \subsection{Filtertypen}
 %TODO Zeichnung bzw. Erklärung?
 
+\section{SPICE}
+\renewcommand{\t}{\texttt}
+\subsection{Bauteile}
+\begin{itemize}
+	\item \t{L<Name> <Knoten1> <Knoten2> <Wert>}: Spule zwischen Knoten \t{<Knoten1>} und Knoten \t{<Knoten2>} mit Induktivität \t{<Wert>}
+	\item \t{C<Name> <Knoten1> <Knoten2> <Wert>}: Kondensator zwischen Knoten \t{<Knoten1>} und Knoten \t{<Knoten2>} mit Kapazität \t{<Wert>}
+	\item \t{R<Name> <Knoten1> <Knoten2> <Wert>}: Widerstand zwischen Knoten \t{<Knoten1>} und Knoten \t{<Knoten2>} mit Widerstandswert \t{<Wert>}
+	\item \t{U<Name> <Knoten1> <Knoten2> <Wert>}: Spannungsquelle zwischen Knoten \t{<Knoten1>} und Knoten \t{<Knoten2>} mit Spannung \t{<Wert>} (Spannung positiv bei \t{<Knoten1>}).
+	\item \t{I<Name> <Knoten1> <Knoten2> <Wert>}: Stromquelle zwischen Knoten \t{<Knoten1>} und Knoten \t{<Knoten2>} mit Stromstärke \t{<Wert>} (Strom in Richtung \t{<Knoten2>}).
+\end{itemize}
+\subsection{Parameterbefehle}
+\begin{itemize}
+	\item \t{.step param <Param> <Start> <End> <Step>}: Alle Parameter \t{\{<Param>\}} werden vom Startwert \t{<Start>} bis \t{<End>} während der Simulation als Treppenfunktion mit Schrittweite \t{<Step>} eingesetzt.
+	\item \t{.step param <Param> list <Wert1> <Wert2> ...}: Simulation wird $n$ mal für jeden Parameterwert durchgeführt.
+	\item \t{.step oct param <Param> <Start> <End> <StepsPerOct>}
+\end{itemize}
+\subsection{Analysearten}
+\begin{itemize}
+	\item \t{.tran <Endtime>}: Transientenanalyse im Zeitbereich von $t = 0$ bis $t = \text{\t{<Endtime>}}$. Bsp.: \t{.trans 60us}
+\end{itemize}
+
+\section{Simulink}
+TODO %TODO
+
 \end{multicols*}
 \end{document}

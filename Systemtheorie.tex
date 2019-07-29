@@ -81,9 +81,10 @@
 
 Merke: Am Kondensa\textsl{tor}, eilt der Strom \textsl{vor}, bei Induktivi\textsl{täten}, wird er sich ver\textsl{späten}\\
 Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wird der Bauch konvex.\\
-% Liste mit Eselsbrücken für Ingenieure
-% selbstausdenken begriffspaare
-\section{Schaltungen ersten Grades}
+
+%TODO Markt & Population (Zitat Joham) S.19f.
+
+\section{Systeme ersten Grades}
 \sectionbox{
 	\textbf{I. Resistives ESB bestimmen}\\
 \tablebox{
@@ -98,12 +99,14 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 	\end{tabular*}
 }
 	
-	\textbf{II. Aufstellen DGL:} $\dot x(t) = - \fr{1}{\tau}x(t) + \fr{1}{\tau}v$ mit der Erregung $v$\\
-	\textbf{III. Lösen der DGL:}\\
+	\textbf{II. Aufstellen DGL} (kanonische Form)\\
+	$\dot x(t) = - \fr{1}{\tau}x(t) + \fr{1}{\tau}v$ mit der Erregung $v$\\
+	\textbf{III. Lösen der DGL}\\
 	Konstante Erregung:  $x(t) = x_\infty + (x_0 - x_\infty )\e^{-\frac{t-t_0}{\tau}}$ \\
 	Allgemeine Erregung: $x(t) = x_0\e^{\frac{t_0-t}{\tau}}+\int_{t_0}^t{\frac{1}{\tau}v(t')\e^{\frac{t'_0-t'}{\tau}}} $ \\
 	zero-input-response: Erster Summand\\
 	zero-state-response: Zweiter Summand\\
+	%TODO vielleicht schöner unter die Formel schreiben
 	mit $u_{C,\infty}=U_0$ bzw. $i_{L,\infty}=I_0$\\
 	\textbf{IV. Dynamischer Pfad}\\
 \tablebox{
@@ -134,8 +137,14 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 \subsection{Instabile Schaltung ($\tau < 0$)}
 \includegraphics[width=.8\linewidth]{img/graph-instabil}
 \subsection{Dynamischer Pfad}
+%TODO Dynamischer Pfad S.24
+
+%TODO Sprungantwort S.14 & Sprungphänomene S.26
 	
-\section{Schaltungen zweiten Grades}
+%TODO Astabiler Multivibrator & Bistabiler Flip Flop S.26
+
+%TODO Solow-Swan-Modell S.35
+\section{Systeme zweiten Grades}
 	\subsection{Differentialgleichungssystem aufstellen}
 		\textbf{I. Schaltung umzeichnen}\\
 		Zeichne die Schaltung so um, dass beide Reaktanzen an den äußeren Seiten sind.\\
@@ -169,7 +178,7 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 		\textbf{Sattelpunkt}\\
 		$\lambda_1 < 0, \lambda_2 > 0$: Zwei Geraden in Eigenrichtungen, von stabiler Richtung zu GGP, zu instabiler Richtung. Restliche Trajektorien Hyperbeln mit Geraden als Asymptoten.\\
 		\includegraphics[width=.7\linewidth]{phase-sattel}\\
-		%TODO degradierte Phasenportraits?
+		%TODO degradierte Phasenportraits? S.60
 		\textbf{IV. Einzeichnen von Fixpunkt und Eigenvektoren}\\
 		Die Eigenvektoren werden ausgehend vom Fixpunkt eingezeichnet. Bei konjugierten Eigenvektoren zeichnet man den Realteil und den negierten Imaginärteil.\\
 		\subsubsection{Isokline}
@@ -179,29 +188,31 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 		Kurve, die Gebiete mit verschiedenem Langzeitverhalten trennt.
 	\subsection{Lösung der Zustandsgleichungen}
 		\subsubsection{Homogener Fall}
-		Transformation autonom (konst. Erregung) $\ra$ homogener Fall mit: $x' = x - x_\infty$.\\
+		Transformation autonom (konst. Erregung) $\ra$ homogener Fall mit: $x' = x - x_\infty$.\\ \\
 		$\lambda_1 \neq \lambda_2$: $c_1\e^{\lambda_1t}\v q_1 + c_2\e^{\lambda_2t}\v q_2$\\
 		$\lambda_1 = \lambda_2 = \lambda$: $\e^{\lambda t}(\ma 1 + (\ma A -\lambda \ma 1)t) [q_1 q_2]^T$\\
 		komplexe Eigenwerte: $c_1 \e^{\alpha t}(\cos{(\beta t)}\v q_{reell} - \sin{(\beta t)}\v q_{imag} + c_2\e^{\alpha t}(\sin{(\beta t)}\v q_{reell} - \cos{(\beta t)}\v q_{imag})$\\
-		\subsection{Transformation auf Normalform}
+		\subsubsection{Transformation auf Normalform}
+		%TODO x' -> Xi & reell imag als Text im Index
 		Gegeben: $\dot{x} = \ma A\v x + \ma B\v v$\\
 		Normalform: $\dot{x'} = \ma{A'}\v{x'} + \v{v'}$\\
 		Eigenwerte $\lambda_1, \lambda_2$ und Eigenvektoren $\v q_1, \v q_2$ berechnen\\
 		$\ma Q =  \mat{\v q_1 & \v q_2 }$\\
 		$\ma{A'} = \ma Q^{-1}\ma A\ma Q = \mat{\lambda_1 & 0 \\ 0 & \lambda_2 }, \v{x'} = \ma Q^{-1}\v x$, $\v{v'} = \ma Q^{-1}\ma B\v v$.  
-		\subsection{Transformation auf reellwertige Normalform}
+		\subsubsection{Transformation auf reellwertige Normalform}
 		Gegeben: $\lambda_{1/2} = \alpha \pm \beta j, \v q_r, \v q_i$\\
 		$A_{reell} =  \mat{\alpha & - \beta \\ \beta & \alpha}$\\
 		$Q_{reell} = \mat{ q_r & - q_i}$\\
 		$x_{reell} = \ma Q_{reell}^{-1} \e^{\Delta t}\ma Q_{reell}$\\
 		$\dot{x}_{reell} (t) = A_{reell}x_{reell}(t)$\\ 
+		%TODO Jordan-Normalform S.52
 		\subsection{Zeitverlauf der Zustandsvariablen}
-		Eigenwerte: $\lambda_i = \alpha + j\beta$ mit $\alpha$: Dämpfung, $\beta$: Schwingung\\
+		Eigenwerte: $\lambda_i = \alpha + j\beta$ mit Dämpfung $\alpha$ und Schwingung $\beta$\\
 		\textbf{Stabilität:} stabil, falls $\alpha < 0$, sonst instabil\\
 		Schwingung mit Kreisfrequenz $\omega = \beta$\\
 		\tablebox{		
 		\begin{tabular*}{\columnwidth}{l@{\extracolsep\fill}|l} \ctrule
-		%TODO Beispielgraph
+		%TODO evtl. Beispielgraph 73ff.
 		Fall & Schwingungsart \\ \cmrule
 		$\alpha = 0, \beta \neq 0$ & ungedämpfte Schwingung\\
 		$\alpha < 0, \beta \neq 0$ & schwach gedämpfte Schwingung\\
@@ -209,7 +220,8 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 		$\lambda_1 \neq \lambda_2, \beta = 0$ & stark gedämpfte Schwingung\\ \cbrule
 		\end{tabular*}
 		} 
-\section{Nichtlineare Schaltungen}
+		%TODO Sprungantwort & Impulsantwort S.56
+\section{Nichtlineare dynamische Systeme}
 	\begin{enumerate}
 		\item Alle Fixpunkte bestimmen $\v f(x_\infty) \stackrel{!}{=} \v 0$
 		\item Jacobimatrix bestimmen
@@ -220,12 +232,16 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 \subsection{Energiefunktion}
 Eigenschaften: stetig, lokal nicht konstant, auf jeder Trajektorie konstant\\
 Schaltung ist \textbf{konservativ} $\Leftrightarrow \dot E = 0$\\
+%TODO Energieglg. ausführlicher S.87
 Erweiterung des Satzes von Hartmann/Grobmann: Jacobimatrix hat nur imaginäre EW und Schaltung ist konservativ $\Leftrightarrow$ GGP ist Wirbelpunkt\\
+%TODO Schwingkreis S.88
 \subsection{Oszillatoren}
-%TODO Bild von Schaltung und Phasenportrait
+%TODO Bild von Schaltung und Phasenportrait - S.93
 Schaltung mit periodischem Verlauf der Zustandsgrößen\\
 Voraussetzung: nichtlinear, nur ein Fixpunkt (instabil)
-%TODO Relaxationsoszi, fast-harmonischer Oszi
+%TODO Relaxationsoszi, fast-harmonischer Oszi S.98
+\section{Dynamische Schaltungen beliebigen Grades}
+%TODO Tablau S.104, AP und´ Kleinsignalanalyse S.112
 \section{Komplexe Wechselstromrechnung}
 \textbf{Vorraussetzung:} lineares, eingeschwungenes System mit sinusförmiger Erregung $x(t) = A_m \cdot \cos(\omega t + \phi)$\\
 \sectionbox{
@@ -265,16 +281,10 @@ Voraussetzung: nichtlinear, nur ein Fixpunkt (instabil)
 	\textbf{Komplexe Leistung}: $P = \frac{1}{2}UI^* = \frac{1}{2}U_m\cdot e^{j\phi_u}\cdot I_m\cdot e^{-j\phi_i} = U_{\text{eff}}\cdot I_{\text{eff}}\cdot e^{j(\phi_u-\phi_i)}$\\
 	\textbf{Scheinleistung}: $S = |P|$\\
 	\textbf{Wirkleistung}: $P_w = Re{P}$\\
+	%TODO
 	\textbf{Blindleistung}: $P_B = Im{P}$
 }
-\subsection{Übertragungsfunktion}
-$H(j\omega ) = \fr{\text{Ausgang}}{\text{Eingang}}$\\
-Nullstellen des Ausgangs werden als $p_{0,i}$ bezeichnet\\
-Nullstellen des Eingangs werden als $p_{\infty,i}$ bezeichnet\\
-Polstellen $p_{\infty, i}$ von $H(j\omega)$ sind die Eigenwerte der Systemmatrix\\
-\textbf{Stabilität:} Re$\{p_{\infty,i}\} < 0$ \quad $\forall i$\\
-\subsubsection{Schwingkreis}
-%TODO Resonanz, Güte
+\section{Analyse dynamischer Systeme im Frequenzbereich}
 \subsection{Laplace-Transformation}
 Für kausale Funktionen mit $f(t) = 0$ für $t < 0$:\\
 $F(p) = \mathcal L\{f(t)\} = \int_0^\infty f(t) \e^{-pt}dt$\\
@@ -294,7 +304,13 @@ $f(t) = \mathcal L^{-1}\{F(p)\} = \fr{1}{2\pi j}\int_{\gamma-j\infty}^{\gamma+j\
 Allgemeine Lösung im Frequenzraum:\\
 $x(p) = \fr{1}{p\ma 1-\ma A}x_0 + \fr{1}{p\ma 1-\ma A}bV(p)$\\
 $x(t) = x(0)\e^{\ma At} + \int_0^t \e^{\ma A(t-t')}v(t')b dt'$
-\section{Bodediagramm und Ortskurve}
+\subsection{Übertragungsfunktion}
+%TODO Eigenfrequenz und Grenzfrequenz S.139ff. / S.141
+$H(j\omega ) = \fr{\text{Ausgang}}{\text{Eingang}}$\\
+Nullstellen des Ausgangs werden als $p_{0,i}$ bezeichnet\\
+Nullstellen des Eingangs werden als $p_{\infty,i}$ bezeichnet\\
+Polstellen $p_{\infty, i}$ von $H(j\omega)$ sind die Eigenwerte der Systemmatrix\\
+\textbf{Stabilität:} Re$\{p_{\infty,i}\} < 0$ \quad $\forall i$\\
 Darstellung einer Schaltung in Abhängigkeit der Frequenz\\
 $H(j\omega) = \abs{H(j\omega)} \exp (j\angle H(j\omega))$\\
 $\phi (\omega) = \angle H(j\omega) = \begin{cases}
@@ -303,13 +319,15 @@ $\phi (\omega) = \angle H(j\omega) = \begin{cases}
 	\end{cases}$\\
 logarithmierte Darstellung des Betrages: $v(\omega) = 20 \log_{10} \abs{H(j\omega)}$\\
 \subsection{Bodediagramm}
-%TODO Beispiele?
+%TODO Graph
 \begin{enumerate}
 	\item Übertragungsfunktion faktorisieren
+	%TODO faktorisieren genauer! Tutorium
 	\item Phasen und logarithmierte Beträge der Faktoren aufaddieren
 	\item Separates Zeichnen des Betrages $v(\omega)$ und der Phase $\phi(\omega)$ in zwei Diagramme
-\end{enumerate} 
+\end{enumerate}
 \subsection{Ortskurve}
+%TODO Graph 
 \begin{enumerate}
 	\item Bestimmung von diversen Werten der Übertragungsfunktion
 	\item Eintragen in der komplexen Ebene
@@ -317,7 +335,8 @@ logarithmierte Darstellung des Betrages: $v(\omega) = 20 \log_{10} \abs{H(j\omeg
 \end{enumerate}
 \subsection{Filtertypen}
 %TODO Zeichnung bzw. Erklärung?
-
+\subsection{Schwingkreis}
+%TODO Resonanz, Güte S.140
 \section{SPICE}
 \renewcommand{\t}{\texttt}
 \subsection{Bauteile}

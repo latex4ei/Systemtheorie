@@ -162,16 +162,19 @@ Beispiele: Relaxationsoszilator, astabiler Multivibrator
 		\item[b)] zwei Spulen: Leitwertsmatrix $\ma G$
 		\item[c)] Kondensator (Tor 1) und Spule (Tor 2): Inverse Hybridmatrix $\ma{H'}$
 		\end{itemize}
-		
+
 		\textbf{III. Quellenvektor aufstellen}
-		
+
 		\textbf{IV. Differentialgleichungssystem aufstellen}
 	\subsection{Phasenportraits}
 	\subsubsection{Zeichnen des Phasenportraits}
 		\textbf{I. Bestimmung der Eigenwerte $\lambda_i$ und Eigenvektoren $q_i$}\\
-		%TODO q_r und q_i
+		$\lambda_{1,2} = \frac{tr(\ma A)}{2} \pm \sqrt{\frac{tr(\ma A)^2}{4}-det(\ma A)}$\\
+		$a_{12} \neq 0 \Rightarrow \v q_i = \mat{-a_{12}\\a_{11}-\lambda_i}$\quad $a_{21} \neq 0 \Rightarrow \v q_i = \mat{a_{22}-\lambda_i\\-a_{21}}$\quad$a_{12} = a_{21} = 0 \Rightarrow \v q_1 = \mat{1\\0}, \v q_2 = \mat{0\\1}$\\
+		Falls Eigenvektoren reell: $\v q_r = Re\{q_1\}$\qquad$\v q_i = Im\{q_1\}$\\
 		\textbf{II. Bestimmung des Fixpunktes}\\
 		$\ma A\v x + \ma B\v x = 0$\\
+		%TODO Wtf
 		\textbf{III. Art des Phasenportraits}\\
 		\textbf{Strudelpunkt}\\
 		$\lambda_{1/2} = \alpha \pm \beta j$, $\alpha \neq 0$: Je nach $\sgn(\alpha)$ (in-)stabiler Strudel in Drehrichtung von $q_r$ ($\xi_{\text{reel}1}$) nach $-q_i$ ($\xi_{\text{reel}2}$)\\

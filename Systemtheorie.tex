@@ -103,10 +103,7 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 	$\dot x(t) = - \fr{1}{\tau}x(t) + \fr{1}{\tau}v$ mit der Erregung $v$\\
 	\textbf{III. Lösen der DGL}\\
 	Konstante Erregung:  $x(t) = x_\infty + (x_0 - x_\infty )\e^{-\frac{t-t_0}{\tau}}$ \\
-	Allgemeine Erregung: $x(t) = x_0\e^{\frac{t_0-t}{\tau}}+\int_{t_0}^t{\frac{1}{\tau}v(t')\e^{\frac{t'_0-t'}{\tau}}} $ \\
-	zero-input-response: Erster Summand\\
-	zero-state-response: Zweiter Summand\\
-	%TODO vielleicht schöner unter die Formel schreiben
+	Allgemeine Erregung: $x(t) = \underbrace{x_0\e^{\frac{t_0-t}{\tau}}}_{\text{zero-input-response}}+\underbrace{\int_{t_0}^t{\frac{1}{\tau}v(t')\e^{\frac{t'_0-t'}{\tau}}}}_{\text{zero-state-response}}$ \\
 	mit $u_{C,\infty}=U_0$ bzw. $i_{L,\infty}=I_0$\\
 	\textbf{IV. Dynamischer Pfad}\\
 \tablebox{
@@ -231,8 +228,8 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 	\end{enumerate}
 \subsection{Energiefunktion}
 Eigenschaften: stetig, lokal nicht konstant, auf jeder Trajektorie konstant\\
-Schaltung ist \textbf{konservativ} $\Leftrightarrow \dot E = 0$\\
-%TODO Energieglg. ausführlicher S.87
+Schaltung ist \textbf{konservativ}, falls:\\
+$\dot E = 0 \Leftrightarrow \pd{x_1} E(\v x) \dot x_1 + \pd{x_2} E(\v x) \dot x_2 + \hdots + \pd{x_n} E(\v x) \dot x_n = 0$\\
 Erweiterung des Satzes von Hartmann/Grobmann: Jacobimatrix hat nur imaginäre EW und Schaltung ist konservativ $\Leftrightarrow$ GGP ist Wirbelpunkt\\
 %TODO Schwingkreis S.88
 \subsection{Oszillatoren}
@@ -280,9 +277,8 @@ Voraussetzung: nichtlinear, nur ein Fixpunkt (instabil)
 	\textbf{Leistungsmittelwert}: $P_w = \frac{1}{T} \int_0^T u(t)i(t)dt$\\
 	\textbf{Komplexe Leistung}: $P = \frac{1}{2}UI^* = \frac{1}{2}U_m\cdot e^{j\phi_u}\cdot I_m\cdot e^{-j\phi_i} = U_{\text{eff}}\cdot I_{\text{eff}}\cdot e^{j(\phi_u-\phi_i)}$\\
 	\textbf{Scheinleistung}: $S = |P|$\\
-	\textbf{Wirkleistung}: $P_w = Re{P}$\\
-	%TODO
-	\textbf{Blindleistung}: $P_B = Im{P}$
+	\textbf{Wirkleistung}: $P_w = \text{Re}\{P\}$\\
+	\textbf{Blindleistung}: $P_B = \text{Im}\{P\}$
 }
 \section{Analyse dynamischer Systeme im Frequenzbereich}
 \subsection{Laplace-Transformation}

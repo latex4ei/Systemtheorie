@@ -231,18 +231,19 @@ Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wir
 	\end{enumerate}
 \subsection{Energiefunktion}
 Eigenschaften: stetig, lokal nicht konstant, auf jeder Trajektorie konstant\\
-Schaltung ist \textbf{konservativ} $\Leftrightarrow \dot E = 0$\\
-%TODO Energieglg. ausführlicher S.87
+Schaltung ist \textbf{konservativ}, falls:\\
+$\dot E = 0 \Leftrightarrow \pd{x_1} E(\v x) \dot x_1 + \pd{x_2} E(\v x) \dot x_2 + \hdots + \pd{x_n} E(\v x) \dot x_n = 0$\\
 Erweiterung des Satzes von Hartmann/Grobmann: Jacobimatrix hat nur imaginäre EW und Schaltung ist konservativ $\Leftrightarrow$ GGP ist Wirbelpunkt\\
 %TODO Schwingkreis S.88
 \subsection{Oszillatoren}
 %TODO Bild von Schaltung und Phasenportrait - S.93
 Schaltung mit periodischem Verlauf der Zustandsgrößen\\
 Voraussetzung: nichtlinear, nur ein Fixpunkt (instabil)\\
-\textbf{Van der Pol-Oszillator:} Parallelschaltung aus nichtlinearem Widerstand, Spule und Kapazität:\\
+\textbf{Van der Pol-Oszillator:}\\
 \parbox{.5\linewidth}{\includegraphics[width=\linewidth]{img/van-der-pol}}
 \parbox{.5\linewidth}{\includegraphics[width=\linewidth]{img/fast-harmonischer-oszillator}}\\
-\textbf{Relaxationsoszillator:} Serienschaltung aus Stückweise linearem Widerstand, Kondensator und Spule. Phasenportrait:\\ \includegraphics[width=.5\linewidth]{img/relaxationsoszillator}
+\textbf{Relaxationsoszillator:}\\ 
+\includegraphics[width=.5\linewidth]{img/relaxationsoszillator}
 \includegraphics[width=.5\linewidth]{img/relaxationsoszillator-schaltung} 
 \section{Dynamische Schaltungen beliebigen Grades}
 %AP und´ Kleinsignalanalyse S.112
@@ -313,11 +314,12 @@ Allgemeine Lösung im Frequenzraum:\\
 $x(p) = \fr{1}{p\ma 1-\ma A}x_0 + \fr{1}{p\ma 1-\ma A}bV(p)$\\
 $x(t) = x(0)\e^{\ma At} + \int_0^t \e^{\ma A(t-t')}v(t')b dt'$
 \subsection{Übertragungsfunktion}
-%TODO Eigenfrequenz und Grenzfrequenz S.139ff. / S.141
+%TODO Grenzfrequenz S.139ff. / S.141
 $H(j\omega ) = \fr{\text{Ausgang}}{\text{Eingang}}$\\
 Nullstellen des Ausgangs werden als $p_{0,i}$ bezeichnet\\
-Nullstellen des Eingangs werden als $p_{\infty,i}$ bezeichnet\\
+Nullstellen des Eingangs werden als \textbf{Eigenfrequenzen} $p_{\infty,i}$ bezeichnet\\
 Polstellen $p_{\infty, i}$ von $H(j\omega)$ sind die Eigenwerte der Systemmatrix\\
+3dB-\textbf{Grenzfrequenz:} $\abs{H(j\omega)}^2 = \fr{1}{2}$\\
 \textbf{Stabilität:} Re$\{p_{\infty,i}\} < 0$ \quad $\forall i$\\
 Darstellung einer Schaltung in Abhängigkeit der Frequenz\\
 $H(j\omega) = \abs{H(j\omega)} \exp (j\angle H(j\omega))$\\

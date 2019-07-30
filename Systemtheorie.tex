@@ -238,7 +238,12 @@ Schaltung mit periodischem Verlauf der Zustandsgrößen\\
 Voraussetzung: nichtlinear, nur ein Fixpunkt (instabil)
 %TODO Relaxationsoszi, fast-harmonischer Oszi S.98
 \section{Dynamische Schaltungen beliebigen Grades}
-%TODO Tablau S.104, AP und´ Kleinsignalanalyse S.112
+%AP und´ Kleinsignalanalyse S.112
+$\dd t \mat{\ma 0 & \ma 0\\\ma 0 & \ma 0\\\ \ma M_1 & \ma N_1}\mat{\v u\\\v i} = - \mat{ \ma B & \ma 0 \\ \ma 0 & \ma A \\ \ma M_0 & \ma N_0}\mat{\v u\\\v i} + \mat{\v 0\\\v 0\\\v e}$\\
+	$\ma M_1, \ma N_1$: Elementgleichungen der reaktiven Elemente\\
+	$\ma M_0, \ma N_0$: Elementgleichungen aus Tablau\\
+	$\ma B$: KVL, $\ma A$: KCL\\
+	($e = 0 \Leftrightarrow$ keine Quellen enthalten)
 \section{Komplexe Wechselstromrechnung}
 \textbf{Vorraussetzung:} lineares, eingeschwungenes System mit sinusförmiger Erregung $x(t) = A_m \cdot \cos(\omega t + \phi)$\\
 \sectionbox{

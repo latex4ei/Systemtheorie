@@ -200,21 +200,26 @@ Beispiele: Relaxationsoszilator, astabiler Multivibrator
 		Transformation autonom (konst. Erregung) $\ra$ homogener Fall mit: $x' = x - x_\infty$.\\ \\
 		$\lambda_1 \neq \lambda_2$: $c_1\e^{\lambda_1t}\v q_1 + c_2\e^{\lambda_2t}\v q_2$\\
 		$\lambda_1 = \lambda_2 = \lambda$: $\e^{\lambda t}(\ma 1 + (\ma A -\lambda \ma 1)t) [q_1 q_2]^T$\\
-		komplexe Eigenwerte: $c_1 \e^{\alpha t}(\cos{(\beta t)}\v q_{reell} - \sin{(\beta t)}\v q_{imag} + c_2\e^{\alpha t}(\sin{(\beta t)}\v q_{reell} - \cos{(\beta t)}\v q_{imag})$\\
+		komplexe Eigenwerte: $c_1 \e^{\alpha t}(\cos{(\beta t)}\v q_{\text{reell}} - \sin{(\beta t)}\v q_{\text{imag}} + c_2\e^{\alpha t}(\sin{(\beta t)}\v q_{\text{reell}} - \cos{(\beta t)}\v q_{\text{imag}})$\\
 		\subsubsection{Transformation auf Normalform}
 		Gegeben: $\dot{x} = \ma A x$\\
 		Normalgleichung: $\dot{\xi} = \ma{A}\xi$\\
 		Eigenwerte $\lambda_1, \lambda_2$ und Eigenvektoren $\v q_1, \v q_2$ berechnen\\
 		$\ma Q =  \mat{\v q_1 & \v q_2 }$\\
 		$\Lambda = \ma Q^{-1}\ma A\ma Q = \mat{\lambda_1 & 0 \\ 0 & \lambda_2 }, \xi = \ma Q^{-1} x$\\
-		$x(t) = \ma Q \xi(t) = \ma Q exp(\Lambda(t-t_0))\ma Q^{-1} x_0$\\
+		$x(t) = \ma Q \xi(t) = \ma Q \exp(\Lambda(t-t_0))\ma Q^{-1} x_0$\\
+		\subsubsection{Transformation auf Jordan-Normalform}
+		Gegeben: $\lambda = \lambda_1 = \lambda_2, \ma A$ ist keine Diagonalmatrix\\
+		$J = \mat{\lambda & 1 \\ 0 & \lambda}, \ma Q' = \mat{\v q_1' & \v q_2'}, \xi'(t) = \ma Q'^{-1}\v x(t)$\\
+		Zustandsgleichung in Jordan-Normalform: $\dot \xi '(t) = \ma J \xi '(t)$\\
+		Lösung der Zustandsgleichung:\\ $\xi '(t) = \mat{\exp(\lambda(t-t_0))\xi_1'(t_0)+(t-t_0)\exp(\lambda(t-t_0))\xi_1'(t_0) \\ \exp(\lambda(t-t_0))\xi_2'(t_0) }$\\
+		Rücktransformation: $\v x(t) = \ma Q'\xi '(t) = \v q_1'\xi_1'(t) + \v q_2'\xi_2'(t)$\\
 		\subsubsection{Transformation auf reellwertige Normalform}
 		Gegeben: $\lambda_{1/2} = \alpha \pm \beta j, \v q_r, \v q_i$\\
 		$A_\text{reell} =  \mat{\alpha & - \beta \\ \beta & \alpha}$\\
 		$Q_\text{reell} = \mat{ q_r & - q_i}$\\
 		$x_\text{reell} = \ma Q_\text{reell}^{-1} \e^{\Delta t}\ma Q_\text{reell}$\\
 		$\dot{x}_\text{reell} (t) = A_\text{reell}x_\text{reell}(t)$\\ 
-		%TODO Jordan-Normalform S.52
 		\subsection{Zeitverlauf der Zustandsvariablen}
 		Eigenwerte: $\lambda_i = \alpha + j\beta$ mit Dämpfung $\alpha$ und Schwingung $\beta$\\
 		\textbf{Stabilität:} stabil, falls $\alpha < 0$, sonst instabil\\

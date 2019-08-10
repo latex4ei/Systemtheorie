@@ -148,10 +148,8 @@ Tritt auf, falls Pfad in einen toten Punkt läuft.\\
 Führt zu einer sprungartigen Fortsetzung des dynamischen Pfades auf einem anderen Kennlinienast (Stetigkeitsregel beachten).\\
 Beispiele: Relaxationsoszilator, astabiler Multivibrator
 
-%TODO Sprungantwort S.14 & Sprungphänomene S.26
+%TODO Sprungphänomene S.26
 	
-%TODO Astabiler Multivibrator & Bistabiler Flip Flop S.26
-
 %TODO Solow-Swan-Modell S.35
 \section{Systeme zweiten Grades}
 	\subsection{Differentialgleichungssystem aufstellen}
@@ -354,8 +352,14 @@ logarithmierte Darstellung des Betrages: $v(\omega) = 20 \log_{10} \abs{H(j\omeg
 %TODO Graph, verschiedene Typen (siehe Tut Teutsch)
 \begin{enumerate}
 	\item Übertragungsfunktion faktorisieren\\
-		$H(jw) = K \cdot \prod_{n=1}^N \left(1+\frac{jw}{w_n}\right)^{z_n}$\qquad$z_n \in \mathbb{Z} \ \{0\}$\\
-	\item Phasen und logarithmierte Beträge der Faktoren aufaddieren
+		$H(jw) = K \cdot \prod_{n=1}^n \left(x_n+\frac{jw}{w_n}\right)^{z_n}$\qquad$z_n \in \mathbb{Z} \ \{0\}$\\
+	\item Logarithmierte Beträge der einzelnen Faktoren aufstellen\\
+		\quad a) Konstanter Faktor: $y = 20\cdot\log_{10}(K)$dB\\
+		\quad b) Falls $x_n = 0$: Gerade durch $(\omega_n, 0$dB$)$\\
+		\quad c) Falls $z_n < 0$: Bis $\omega_n$ Funktion gleich 0dB, dann linear um $20 \cdot\log_{10}(x_n)$dB pro Dekade fallend\\
+		\quad d) Falls $z_n > 0$: Bis $\omega_n$ Funktion gleich 0dB, dann linear um $20 \cdot\log_{10}(x_n)$dB pro Dekade steigend\\
+	\item Phase der Faktoren bestimmen
+	\item Logarithmierte Beträge und Phasen aufaddieren
 	\item Separates Zeichnen des Betrages $v(\omega)$ und der Phase $\phi(\omega)$ in zwei Diagramme
 \end{enumerate}
 \subsection{Ortskurve}
@@ -376,7 +380,9 @@ Hier: Widerstandsortskurve eines Parallelschwingkreises. Kann auch Leitwert oder
 \textbf{Allpass:} $|H(j0)| = c$ (Phase kann sich trotzdem abhängig von $\omega$ ändern!)\\
 \includegraphics[width=\linewidth]{img/filtertypen}
 \subsection{Schwingkreis}
-%TODO Resonanz, Güte S.140
+Resonanzfrequenz: $\omega_0 = \sqrt{\frac{1}{LC}}$\\
+Gütefaktor: $Q = \frac{\omega_0C}{G} = \frac{1}{\omega_0LG} = \frac{\sqrt{C}}{G\sqrt{L}}$\\
+Eigenfrequenzen: $p_{\infty,1,2} = -\frac{\omega_0}{2Q}\pm \frac{\omega_0}{2Q}\sqrt{1-4Q^2}$
 \section{SPICE}
 \renewcommand{\t}{\texttt}
 \subsection{Bauteile}

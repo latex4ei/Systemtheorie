@@ -355,6 +355,10 @@ $H(j\omega ) = \fr{\text{Ausgang}}{\text{Eingang}}$\\
 Nullstellen des Ausgangs werden als $p_{0,i}$ bezeichnet\\
 Nullstellen des Eingangs werden als \textbf{Eigenfrequenzen} $p_{\infty,i}$ bezeichnet\\
 Polstellen $p_{\infty, i}$ von $H(j\omega)$ sind die Eigenwerte der Systemmatrix\\
+\textbf{Bestimmung der Differentialgleichung:}\\
+$H(\j\omega) = \frac{U_A}{U_E} = \frac{a_0 + a_1 \j\omega + a_2 (\j\omega)^2}{e_0 + e_1 \j\omega + e_2 (\j\omega)^2}$\\
+$U_A (e_0 + e_1 \j\omega + e_2 (\j\omega)^2) = U_E  (a_0 + a_1 \j\omega + a_2 (\j\omega)^2)$\\
+$e_0 u_a(t) + e_1 \dot{u}_a(t) + e_2 \ddot{u}_a(t) = a_0 u_e(t) + e_1 \dot{u}_e(t) + e_2 \ddot{u}_e(t)$\\
 3dB-\textbf{Grenzfrequenz:} $\abs{H(j\omega)}^2 = \fr{1}{2}$\\
 \textbf{Stabilität:} Re$\{p_{\infty,i}\} < 0$ \quad $\forall i$\\
 Darstellung einer Schaltung in Abhängigkeit der Frequenz\\

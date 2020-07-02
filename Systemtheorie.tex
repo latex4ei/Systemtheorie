@@ -57,10 +57,10 @@
     \textbf{Verlustfreiheit}: $W_C(t_1, t_2) = \int_{t_1}^{t_2}\! u(t)i(t)\,\mathrm dt = \int_{q_1}^{q_2}\! \mathrm{X}(q)\,\mathrm{d}t$ (Arbeit)\\
     Falls linear: $W = \frac{Cu^2}{2} = \frac{Li^2}{2}$\\
     Periodisch: $u(t+T) = u(t)$, $q(t+T) = q(t)$\\
-    Graphisch: Falls keine geschlossenen Schleifen in q/u, $\Phi$/i-Diagramm existiert (Hystenesefrei)\\
+    Graphisch: Falls keine geschlossenen Schleifen in q/u, $\Phi$/i-Diagramm existieren (Hystenesefrei)\\
     \textbf{Energie (nicht linearer Fall)}:\\
     - Kapazitiv: $W_C(t_1, t_2) = \int_{t_1}^{t_2} \! u(t)i(t)\, \mathrm dt = \int_{q_1}^{q_2} \! u(q)\, \mathrm dq$\\
-    - Induktiv: $W_C(t_1, t_2) = \int_{t_1}^{t_2} \! u(t)i(t)\, \mathrm dt = \int_{\Phi_1}^{\Phi_2} \! i(\Phi)\, \mathrm d\Phi$\\
+    - Induktiv: $W_L(t_1, t_2) = \int_{t_1}^{t_2} \! u(t)i(t)\, \mathrm dt = \int_{\Phi_1}^{\Phi_2} \! i(\Phi)\, \mathrm d\Phi$\\
     \textbf{Energie (linearer Fall)}:\\
     - Kapazitiv: $W_C = \frac{C}{2}u^2 = \frac{1}{2C}q^2$\\
     - Induktiv: $W_L = \frac{L}{2}i^2 = \frac{1}{2L} \Phi^2$\\
@@ -71,7 +71,7 @@
     - Serienschaltung: $C_p = C_1 || C_2 = \frac{C_1C_2}{C_1+C_2}$, $L_p = L_1 + L_2$\\
 
 
-    Merke: Am Kondensa\textsl{tor}, eilt der Strom \textsl{vor}, bei Induktivi\textsl{täten}, wird er sich ver\textsl{späten}\\
+    Merke: Am Kondensa\textbf{tor} eilt der Strom \textbf{vor}, bei Induktivi\textbf{täten} wird er sich ver\textbf{späten}.\\
     Merke: Ist das Mädchen brav, bleibt der Bauch konkav, hat das Mädchen Sex, wird der Bauch konvex.\\
 
     \subsubsection{Dualität}
@@ -80,13 +80,19 @@
 
     %TODO Markt & Population (Zitat Joham) S.19f.
 
+    \subsection{Populationswachstum}
+    
+    Zustandsgleichung: $\dot{p}=\alpha{}p(t)$\\
+    Zeitkonstante $\tau = -\frac{1}{\alpha}$\\
+    Mit Anfangswert $p_0=p(t_0)$ zum Zeitpunkt $t_0$ ist die Lösung des Gleichungssystemes: $p(t)=p_0 e^{\alpha{}(t-t_0)}$\\
+
     \section{Systeme ersten Grades}
     \sectionbox{
     \textbf{I. Resistives ESB bestimmen}\\
     \tablebox{
         \begin{tabular*}{\columnwidth}{@{\extracolsep\fill}l|ll@{}} \trule
             & Kapazität & Induktivität \\ \mrule
-            ESB-Typ & Helmholtz-Thévinin & Mayer-Norton\\
+            ESB-Typ & Helmholtz-Thévenin & Mayer-Norton\\
             &\includegraphics[width=.3\linewidth]{img/helmholtz-thevenin}&
             \includegraphics[width=.3\linewidth]{img/mayer-norton}\\
             Zustandsgröße & $x(t) = u_C(t)$ & $x(t) = i_L(t)$\\
@@ -154,10 +160,10 @@
     \textbf{II. Matrix aufstellen}
     (Quellen vernachlässigen)
     \begin{itemize}
-        \item[a)] zwei Kondensatoren: Leitwertsmatrix $\ma G$
-        \item[b)] zwei Spulen: Widerstandsmatrix $\ma R$
-        \item[c)] Kondensator (Tor 1) und Spule (Tor 2): Inverse Hybridmatrix $\ma{H'}$
-        \item[d)] Spule (Tor 1) und Kondensator (Tor 2): Hybridmatrix $\ma{H}$
+        \item[a)] zwei Kapazitäten: Leitwertsmatrix $\ma G$
+        \item[b)] zwei Induktivitäten: Widerstandsmatrix $\ma R$
+        \item[c)] Kapazität (Tor 1) und Induktivität (Tor 2): Inverse Hybridmatrix $\ma{H'}$
+        \item[d)] Induktivität (Tor 1) und Kapazität (Tor 2): Hybridmatrix $\ma{H}$
     \end{itemize}
 
     \textbf{III. Quellenvektor aufstellen}
@@ -183,7 +189,7 @@
     $\lambda_{1,2} < 0, |\lambda_1| < |\lambda_2|$: Trajektorien von Richtung (Eigenvektor) des schnelleren Eigenwerts ($q_2, \xi_2$) schmiegen sich an an Richtung des langsameren Eigenwerts ($q_1, \xi_1$).\\
     \includegraphics[width=.7\linewidth]{phase-knoten}\\
     \textbf{Sattelpunkt}\\
-    $\lambda_1 < 0, \lambda_2 > 0$: Zwei Geraden in Eigenrichtungen, von stabiler Richtung zu GGP, zu instabiler Richtung. Restliche Trajektorien Hyperbeln mit Geraden als Asymptoten.\\
+    $\lambda_1 < 0 < \lambda_2 $: Zwei Geraden in Eigenrichtungen, von stabiler Richtung zu GGP, zu instabiler Richtung. Restliche Trajektorien Hyperbeln mit Geraden als Asymptoten.\\
     \includegraphics[width=.7\linewidth]{phase-sattel}\\
     %TODO degradierte Phasenportraits? S.60
     \textbf{IV. Einzeichnen von Fixpunkt und Eigenvektoren}\\

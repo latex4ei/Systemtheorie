@@ -78,6 +78,14 @@
 % =======================================================================
 \begin{document}
 
+\IfFileExists{git.id}{\input{git.id}}{}
+\ifdefined\GitRevision\mydate{\GitNiceDate\ (git \GitRevision)}\fi
+\ifdefined\GitIssuesURL
+  \ifdefined\setissueslinkurl
+    \setissueslinkurl{\GitIssuesURL} % Set the actual URL
+  \fi
+\fi
+
 
 % Aufteilung in Spalten
 \vspace{-4mm}
@@ -241,121 +249,116 @@
     \subsubsection{Zeichnen des Phasenportraits}
     \textbf{I. Bestimmung der Eigenwerte $\lambda_i$ und Eigenvektoren $q_i$}\\
     $\lambda_{1,2} = \frac{tr(\ma A)}{2} \pm \sqrt{\frac{tr(\ma A)^2}{4}-det(\ma A)}$\\
-    $a_{12} \neq 0 \Rightarrow \v q_i = \mat{-a_{12}\\a_{11}-\lambda_i}$\quad $a_{21} \neq 0 \Rightarrow \v q_i = \mat{a_{22}-\lambda_i\\-a_{21}}$\quad$a_{12} = a_{21} = 0 \Rightarrow \v q_1 = \mat{1\\0}, \v q_2 = \mat{0\\1}$\\
-    Falls Eigenvektoren komplex: $\v q_r = Re\{q_1\}$\qquad$\v q_i = Im\{q_1\}$\\
-    \textbf{II. Bestimmung des Fixpunktes}\\
-    $\ma A\v x_\infty + \ma B\v v = 0 \Rightarrow \v x_\infty = -\ma A^{-1} \ma B\v v$\\
-    %TODO Wtf
-    \textbf{III. Art des Phasenportraits}\\
-    \textbf{Strudelpunkt}\\
-    $\lambda_{1/2} = \alpha \pm \beta j$, $\alpha \neq 0$: Je nach $\sgn(\alpha)$ (in-)stabiler Strudel in Drehrichtung von $q_r$ ($\xi_{\text{reel}1}$) nach $-q_i$ ($\xi_{\text{reel}2}$)\\
-    \includegraphics[width=.7\linewidth]{phase-strudel}\\
-    \textbf{Wirbelpunkt}\\
-    $\lambda_{1/2} = \pm \beta j$: Wirbel in Drehrichtung von $q_r$ ($\xi_{\text{reel}1}$) nach $-q_i$ ($\xi_{\text{reel}2}$)\\
-    \includegraphics[width=.7\linewidth]{phase-wirbel}\\
-    \textbf{Knotenpunkt}\\
-    $\lambda_{1,2} < 0, |\lambda_1| < |\lambda_2|$: Trajektorien von Richtung (Eigenvektor) des schnelleren Eigenwerts ($q_2, \xi_2$) schmiegen sich an an Richtung des langsameren Eigenwerts ($q_1, \xi_1$).\\
-    \includegraphics[width=.7\linewidth]{phase-knoten}\\
-    \textbf{Sattelpunkt}\\
-    $\lambda_1 < 0 < \lambda_2 $: Zwei Geraden in Eigenrichtungen, von stabiler Richtung zu GGP, zu instabiler Richtung. Restliche Trajektorien Hyperbeln mit Geraden als Asymptoten.\\
-    \includegraphics[width=.7\linewidth]{phase-sattel}\\
-    %TODO degradierte Phasenportraits? S.60
-    \textbf{IV. Einzeichnen von Fixpunkt und Eigenvektoren}\\
-    Die Eigenvektoren werden ausgehend vom Fixpunkt eingezeichnet. Bei konjugierten Eigenvektoren zeichnet man den Realteil und den negierten Imaginärteil.\\
-    \subsubsection{Isokline}
-    Kurve, auf der die Steigung der Trajektorie konstant ist.\\
-    $m = \fr {\dot x_2}{\dot x_1}$, falls $m = 0: \dot x_2 = 0$ bzw. $m = \infty: \dot x_1 = 0$
-    \subsubsection{Separatrix}
-    Kurve, die Gebiete mit verschiedenem Langzeitverhalten trennt.
-    \subsection{Lösung der Zustandsgleichungen}
-    \subsubsection{Homogener Fall}
-    Transformation autonom (konst. Erregung) $\ra$ homogener Fall mit: $\ \v x' = \v x - \v x_\infty$.\\ \\
-    $\lambda_1 \neq \lambda_2$: $\v x(t) = \ c_1\e^{\lambda_1t}\v q_1 + c_2\e^{\lambda_2t}\v q_2$\\
-    $\lambda_1 = \lambda_2 = \lambda$: $\v x(t) = e^{\lambda t}(\ma 1 + (\ma A -\lambda \ma 1)t) [q_1 q_2]^T$\\
-    komplexe Eigenwerte: $c_1 \e^{\alpha t}(\cos{(\beta t)}\v q_{\text{reell}} - \sin{(\beta t)}\v q_{\text{imag}} + c_2\e^{\alpha t}(\sin{(\beta t)}\v q_{\text{reell}} - \cos{(\beta t)}\v q_{\text{imag}})$\\
-    \subsubsection{Transformation auf Normalform}
-    Gegeben: $\dot{x} = \ma A x$\\
-    Normalgleichung: $\dot{\xi} = \Lambda{}\xi$\\
-    Eigenwerte $\lambda_1, \lambda_2$ und Eigenvektoren $\v q_1, \v q_2$ berechnen\\
-    $\ma Q =  \mat{\v q_1 & \v q_2 }$\\
-    $\Lambda = \ma Q^{-1}\ma A\ma Q = \mat{\lambda_1 & 0 \\ 0 & \lambda_2 }, \xi = \ma Q^{-1} x$\\
-    $x(t) = \ma Q \xi(t) = \ma Q \exp(\Lambda(t-t_0))\ma Q^{-1} x_0$\\
-    \subsubsection{Transformation auf Jordan-Normalform}
-    Gegeben: $\lambda = \lambda_1 = \lambda_2, \ma A$ ist keine Diagonalmatrix\\
-    $J = \mat{\lambda & 1 \\ 0 & \lambda}, \ma Q' = \mat{\v q_1' & \v q_2'}, \xi'(t) = \ma Q'^{-1}\v x(t)$\\
-    Zustandsgleichung in Jordan-Normalform: $\dot \xi '(t) = \ma J \xi '(t)$\\
-    Lösung der Zustandsgleichung:\\ $\xi '(t) = \mat{\exp(\lambda(t-t_0))\xi_1'(t_0)+(t-t_0)\exp(\lambda(t-t_0))\xi_2'(t_0) \\ \exp(\lambda(t-t_0))\xi_2'(t_0) }$\\
-    Rücktransformation: $\v x(t) = \ma Q'\xi '(t) = \v q_1'\xi_1'(t) + \v q_2'\xi_2'(t)$\\
-    \subsubsection{Transformation auf reellwertige Normalform}
-    Gegeben: $\lambda_{1/2} = \alpha \pm \beta j, \v q_r, \v q_i$\\
-    $\Lambda_\text{reell} =  \mat{\alpha & - \beta \\ \beta & \alpha}$\\
-    $Q_\text{reell} = \mat{ q_r & - q_i}$\\
-    $x_\text{reell} = \ma Q_\text{reell}^{-1} \e^{\Delta t}\ma Q_\text{reell}$\\
-    $\dot{\xi}_\text{reell} (t) = \Lambda_\text{reell}\xi_\text{reell}(t)$\\
-    \subsection{Zeitverlauf der Zustandsvariablen}
-    Eigenwerte: $\lambda_i = \alpha + j\beta$ mit Dämpfung $\alpha$ und Schwingung $\beta$\\
-    \textbf{Stabilität:} stabil, falls $\alpha < 0$, sonst instabil\\
-    Schwingung mit Kreisfrequenz $\omega = \beta$\\
-    \tablebox{
-        \begin{tabular*}{\columnwidth}{l@{\extracolsep\fill}|l} \ctrule
-            %TODO evtl. Beispielgraph 73ff.
-            Fall & Schwingungsart \\ \cmrule
-            $\alpha = 0, \beta \neq 0$ & ungedämpfte Schwingung\\
-            $\alpha < 0, \beta \neq 0$ & schwach gedämpfte Schwingung\\
-            $\lambda_1 = \lambda_2 < 0, \beta = 0$ \quad & aperiodischer Grenzfall\\
-            $\lambda_1 \neq \lambda_2, \beta = 0$ & stark gedämpfte Schwingung\\ \cbrule
-        \end{tabular*}
-    }
-    \subsection{Sprung- und Impulsantwort (analog zu \ref{sec:Sprung- und Impulsantwort})}
-    Zustandsgleichung der Form $\dot{\v x}(t) = \ma A\v x(t)+\v bv(t)$.\\
-    Ausgangsgleichung der Form $y(t) = \v c^T\v x(t) + dv(t)$.
-    \subsubsection{Sprungantwort}
+$a_{12} \neq 0 \Rightarrow \mathbf{q}_i = \begin{bmatrix}-a_{12}\\a_{11}-\lambda_i\end{bmatrix}$\quad $a_{21} \neq 0 \Rightarrow \mathbf{q}_i = \begin{bmatrix}a_{22}-\lambda_i\\-a_{21}\end{bmatrix}$\quad$a_{12} = a_{21} = 0 \Rightarrow \mathbf{q}_1 = \begin{bmatrix}1\\0\end{bmatrix}, \mathbf{q}_2 = \begin{bmatrix}0\\1\end{bmatrix}$\\
+Falls Eigenvektoren komplex: $\mathbf{q}_r = \Re{q_1}$\qquad$\mathbf{q}_i = \Im{q_1}$\\
+\textbf{II. Bestimmung des Fixpunktes}\\
+$\mathbf{A}\mathbf{x}_\infty + \mathbf{B}\mathbf{v} = 0 \Rightarrow \mathbf{x}_\infty = -\mathbf{A}^{-1} \mathbf{B}\mathbf{v}$\\
+\textbf{III. Art des Phasenportraits}\\
+\textbf{Strudelpunkt}\\
+$\lambda_{1/2} = \alpha \pm \beta j$, $\alpha \neq 0$: Je nach $\sgn(\alpha)$ (in-)stabiler Strudel in Drehrichtung von $\mathbf{q}_r$ ($\xi_{\text{reel}1}$) nach $-\mathbf{q}_i$ ($\xi_{\text{reel}2}$)\\
+\includegraphics[width=.7\linewidth]{phase-strudel}\\
+\textbf{Wirbelpunkt}\\
+$\lambda_{1/2} = \pm \beta j$: Wirbel in Drehrichtung von $\mathbf{q}_r$ ($\xi_{\text{reel}1}$) nach $-\mathbf{q}_i$ ($\xi_{\text{reel}2}$)\\
+\includegraphics[width=.7\linewidth]{phase-wirbel}\\
+\textbf{Knotenpunkt}\\
+$\lambda_{1,2} < 0, |\lambda_1| < |\lambda_2|$: Trajektorien von Richtung (Eigenvektor) des schnelleren Eigenwerts ($\mathbf{q}_2, \xi_2$) schmiegen sich an an Richtung des langsameren Eigenwerts ($\mathbf{q}_1, \xi_1$).\\
+\includegraphics[width=.7\linewidth]{phase-knoten}\\ \\
+\textbf{Sattelpunkt}\\
+$\lambda_1 < 0 < \lambda_2 $: Zwei Geraden in Eigenrichtungen, von stabiler Richtung zu GGP, zu instabiler Richtung. Restliche Trajektorien Hyperbeln mit Geraden als Asymptoten.\\
+\includegraphics[width=.7\linewidth]{phase-sattel}\\
+\textbf{IV. Einzeichnen von Fixpunkt und Eigenvektoren}\\
+Die Eigenvektoren werden ausgehend vom Fixpunkt eingezeichnet. Bei konjugierten Eigenvektoren zeichnet man den Realteil und den negierten Imaginärteil.\\
+\subsubsection{Isokline}
+Kurve, auf der die Steigung der Trajektorie konstant ist.\\
+$m = \frac{\dot{x}_2}{\dot{x}_1}$, falls $m = 0: \dot{x}_2 = 0$ bzw. $m = \infty: \dot{x}_1 = 0$
+\subsubsection{Separatrix}
+Kurve, die Gebiete mit verschiedenem Langzeitverhalten trennt.
+\subsection{Lösung der Zustandsgleichungen}
+\subsubsection{Homogener Fall}
+Transformation autonom (konst. Erregung) $\Rightarrow$ homogener Fall mit: $\ \mathbf{x}' = \mathbf{x} - \mathbf{x}_\infty$.\\ \\
+$\lambda_1 \neq \lambda_2$: $\mathbf{x}(t) = \ c_1\e^{\lambda_1 t}\mathbf{q}_1 + c_2\e^{\lambda_2 t}\mathbf{q}_2$\\
+$\lambda_1 = \lambda_2 = \lambda$: $\mathbf{x}(t) = e^{\lambda t}(\mathbf{1} + (\mathbf{A} -\lambda \mathbf{1})t) [\mathbf{q}_1 \ \mathbf{q}_2]^T$\\
+komplexe Eigenwerte: $c_1 \e^{\alpha t}(\cos{(\beta t)}\mathbf{q}_{\text{reell}} - \sin{(\beta t)}\mathbf{q}_{\text{imag}}) + c_2\e^{\alpha t}(\sin{(\beta t)}\mathbf{q}_{\text{reell}} - \cos{(\beta t)}\mathbf{q}_{\text{imag}})$\\
+\subsubsection{Transformation auf Normalform}
+Gegeben: $\dot{x} = \mathbf{A} x$\\
+Normalgleichung: $\dot{\xi} = \Lambda \xi$\\
+Eigenwerte $\lambda_1, \lambda_2$ und Eigenvektoren $\mathbf{q}_1, \mathbf{q}_2$ berechnen\\
+$\mathbf{Q} =  \begin{bmatrix} \mathbf{q}_1 & \mathbf{q}_2 \end{bmatrix}$\\
+$\Lambda = \mathbf{Q}^{-1}\mathbf{A}\mathbf{Q} = \begin{bmatrix} \lambda_1 & 0 \\ 0 & \lambda_2 \end{bmatrix}, \xi = \mathbf{Q}^{-1} x$\\
+$x(t) = \mathbf{Q} \xi(t) = \mathbf{Q} \exp(\Lambda(t-t_0))\mathbf{Q}^{-1} x_0$\\
+\subsubsection{Transformation auf Jordan-Normalform}
+Gegeben: $\lambda = \lambda_1 = \lambda_2, \mathbf{A}$ ist keine Diagonalmatrix\\
+$J = \begin{bmatrix} \lambda & 1 \\ 0 & \lambda \end{bmatrix}, \mathbf{Q}' = \begin{bmatrix} \mathbf{q}_1' & \mathbf{q}_2' \end{bmatrix}, \xi'(t) = \mathbf{Q}'^{-1}\mathbf{x}(t)$\\
+Zustandsgleichung in Jordan-Normalform: $\dot{\xi}'(t) = \mathbf{J} \xi'(t)$\\
+Lösung der Zustandsgleichung:\\ $\xi'(t) = \begin{bmatrix} \exp(\lambda(t-t_0))\xi_1'(t_0)+(t-t_0)\exp(\lambda(t-t_0))\xi_2'(t_0) \\ \exp(\lambda(t-t_0))\xi_2'(t_0) \end{bmatrix}$\\
+Rücktransformation: $\mathbf{x}(t) = \mathbf{Q}'\xi'(t) = \mathbf{q}_1'\xi_1'(t) + \mathbf{q}_2'\xi_2'(t)$\\
+\subsubsection{Transformation auf reellwertige Normalform}
+Gegeben: $\lambda_{1/2} = \alpha \pm \beta j, \mathbf{q}_r, \mathbf{q}_i$\\
+$\Lambda_\text{reell} =  \begin{bmatrix} \alpha & - \beta \\ \beta & \alpha \end{bmatrix}$\\
+$\mathbf{Q}_\text{reell} = \begin{bmatrix} \mathbf{q}_r & - \mathbf{q}_i \end{bmatrix}$\\
+$\mathbf{x}_\text{reell} = \mathbf{Q}_\text{reell}^{-1} \e^{\Delta t}\mathbf{Q}_\text{reell}$\\
+$\dot{\xi}_\text{reell} (t) = \Lambda_\text{reell}\xi_\text{reell}(t)$\\
+\subsection{Zeitverlauf der Zustandsvariablen}
+Eigenwerte: $\lambda_i = \alpha + j\beta$ mit Dämpfung $\alpha$ und Schwingung $\beta$\\
+\textbf{Stabilität:} stabil, falls $\alpha < 0$, sonst instabil\\
+Schwingung mit Kreisfrequenz $\omega = \beta$\\
+\tablebox{
+    \begin{tabular*}{\columnwidth}{l@{\extracolsep\fill}|l} \ctrule
+        Fall & Schwingungsart \\ \cmrule
+        $\alpha = 0, \beta \neq 0$ & ungedämpfte Schwingung\\
+        $\alpha < 0, \beta \neq 0$ & schwach gedämpfte Schwingung\\
+        $\lambda_1 = \lambda_2 < 0, \beta = 0$ & aperiodischer Grenzfall\\
+        $\lambda_1 \neq \lambda_2, \beta = 0$ & stark gedämpfte Schwingung\\ \cbrule
+    \end{tabular*}
+}
+\subsection{Sprung- und Impulsantwort (analog zu \ref{sec:Sprung- und Impulsantwort})}
+Zustandsgleichung der Form $\dot{\mathbf{x}}(t) = \mathbf{A}\mathbf{x}(t)+\mathbf{b}v(t)$.\\
+Ausgangsgleichung der Form $y(t) = \mathbf{c}^T\mathbf{x}(t) + dv(t)$.
+\subsubsection{Sprungantwort}
 
-    Sprungantwort $y_\sigma(t) = (d-\v c^T\ma A^{-1}\v b)\sigma (t) + \v c^T\ma A^{-1}\exp{(\ma At)}\v b\sigma(t)$ mit der Sprungfunktion $\sigma(t)$\\ \\
-    Für ein stabiles System mit $\lim_{t\rightarrow\infty}\exp{(\ma At)} = \ma 0$ ($\lambda_{\text{real}} < 0$) konvergiert die Sprungantwort wie folgt: $y_{\sigma,\infty} = d + \v c^T\ma A^{-1}\v b$.
-    \subsubsection{Impulsantwort}
-    $h(t) = \dd t y_\sigma(t)$\\
-    $h(t) = d\delta (t) + \v c^T\exp{(\ma At)}\v b\sigma(t)$
-    \subsection{Steady-State- und Transientenantwort}
-    $\v x(t) = \v x_{\text{trans}}(t) + \v x_{\text{steady}}(t)$
-    \subsubsection{Steady-State-Antwort}
-    $\v x_{\text{steady}}(t) = \text{Re}\{Y(j\omega)\e^{j\omega t}\}$\\
-    $X_{\text{steady}}(t) = H(j\omega) \cdot U_{\text{in}}$
-    \subsubsection{Transientenantwort}
-    Die Summe der Polstellen von $H(j\omega)$ ist die Transientenantwort.\\
-    $\v x_{\text{trans}}(t) = \exp{(\ma At)} \cdot \v x_{\text{trans}}(t)$
-    \section{Nichtlineare dynamische Systeme}
-    \begin{enumerate}
-        \item Alle Fixpunkte bestimmen $\v f(x_\infty) \stackrel{!}{=} \v 0$
-        \item Jacobimatrix bestimmen
-        \item Fixpunkte in Jacobimatrix einsetzen und Eigenwerte und Eigenvektoren bestimmen
-        \item Überprüfen des \textbf{Satzes von Hartmann/Grobmann}: \\Für alle Eigenwerte gilt $Re\{\lambda_i\} \neq 0$
-        \item Phasenportrait zeichnen (lokale Phasenportraits stetig verbinden)
-    \end{enumerate}
-    \subsection{Energiefunktion}
-    Eigenschaften: stetig, lokal nicht konstant, auf jeder Trajektorie konstant\\
-    Schaltung ist \textbf{konservativ}, falls:\\
-    $\dot E = 0 \Leftrightarrow \pd{x_1} E(\v x) \dot x_1 + \pd{x_2} E(\v x) \dot x_2 + \hdots + \pd{x_n} E(\v x) \dot x_n = 0$\\
-    Erweiterung des Satzes von Hartmann/Grobmann: Jacobimatrix hat nur imaginäre EW und Schaltung ist konservativ $\Leftrightarrow$ GGP ist Wirbelpunkt\\
-    %TODO Schwingkreis S.88
-    \subsection{Oszillatoren}
-    %TODO Bild von Schaltung und Phasenportrait - S.93
-    Schaltung mit periodischem Verlauf der Zustandsgrößen\\
-    Voraussetzung: nichtlinear, nur ein Fixpunkt (instabil)\\
-    \textbf{Van der Pol-Oszillator:}\\
-    \parbox{.5\linewidth}{\includegraphics[width=\linewidth]{img/van-der-pol}}
-    \parbox{.5\linewidth}{\includegraphics[width=\linewidth]{img/fast-harmonischer-oszillator}}\\
-    \textbf{Relaxationsoszillator:}\\
-    \includegraphics[width=.5\linewidth]{img/relaxationsoszillator}
-    \includegraphics[width=.5\linewidth]{img/relaxationsoszillator-schaltung}
-    \section{Dynamische Schaltungen beliebigen Grades}
-    %AP und´ Kleinsignalanalyse S.112
-    \subsection{Verallgemeinerte Zustandsgleichungen}
-    $\dd t \mat{\ma 0 & \ma 0\\\ma 0 & \ma 0\\\ \ma M_1 & \ma N_1}\mat{\v u\\\v i} = - \mat{ \ma B & \ma 0 \\ \ma 0 & \ma A \\ \ma M_0 & \ma N_0}\mat{\v u\\\v i} + \mat{\v 0\\\v 0\\\v e}$\\
-    $\ma M_1, \ma N_1$: Elementgleichungen der reaktiven Elemente\\
-    $\ma M_0, \ma N_0$: Elementgleichungen aus Tablau\\
-    $\ma B$: KVL, $\ma A$: KCL\\
-    ($e = 0 \Leftrightarrow$ keine Quellen enthalten)
+Sprungantwort \\$y_\sigma(t) = (d-\mathbf{c}^T\mathbf{A}^{-1}\mathbf{b})\sigma (t) + \mathbf{c}^T\mathbf{A}^{-1}\exp{(\mathbf{A}t)}\mathbf{b}\sigma(t)$ \\
+mit der Sprungfunktion $\sigma(t)$\\ \\
+Für ein stabiles System mit $\lim_{t\rightarrow\infty}\exp{(\mathbf{A}t)} = \mathbf{0}$ ($\lambda_{\text{real}} < 0$) konvergiert die Sprungantwort wie folgt: $y_{\sigma,\infty} = d + \mathbf{c}^T\mathbf{A}^{-1}\mathbf{b}$.
+\subsubsection{Impulsantwort}
+$h(t) = \frac{d}{dt} y_\sigma(t)$\\
+$h(t) = d\delta (t) + \mathbf{c}^T\exp{(\mathbf{A}t)}\mathbf{b}\sigma(t)$
+\subsection{Steady-State- und Transientenantwort}
+$\mathbf{x}(t) = \mathbf{x}_{\text{trans}}(t) + \mathbf{x}_{\text{steady}}(t)$
+\subsubsection{Steady-State-Antwort}
+$\mathbf{x}_{\text{steady}}(t) = \text{Re}\{Y(j\omega)\e^{j\omega t}\}$\\
+$X_{\text{steady}}(t) = H(j\omega) \cdot U_{\text{in}}$
+\subsubsection{Transientenantwort}
+Die Summe der Polstellen von $H(j\omega)$ ist die Transientenantwort.\\
+$\mathbf{x}_{\text{trans}}(t) = \exp{(\mathbf{A}t)} \cdot \mathbf{x}_{\text{trans}}(t)$
+\section{Nichtlineare dynamische Systeme}
+\begin{enumerate}
+    \item Alle Fixpunkte bestimmen $\mathbf{f}(x_\infty) \stackrel{!}{=} \mathbf{0}$
+    \item Jacobimatrix bestimmen
+    \item Fixpunkte in Jacobimatrix einsetzen und Eigenwerte und Eigenvektoren bestimmen
+    \item Überprüfen des \textbf{Satzes von Hartmann/Grobmann}: \\Für alle Eigenwerte gilt $\Re{\lambda_i} \neq 0$
+    \item Phasenportrait zeichnen (lokale Phasenportraits stetig verbinden)
+\end{enumerate}
+\subsection{Energiefunktion}
+Eigenschaften: stetig, lokal nicht konstant, auf jeder Trajektorie konstant\\
+Schaltung ist \textbf{konservativ}, falls:\\
+$\dot{E} = 0 \Leftrightarrow \frac{\partial E(\mathbf{x})}{\partial x_1} \dot{x}_1 + \frac{\partial E(\mathbf{x})}{\partial x_2} \dot{x}_2 + \hdots + \frac{\partial E(\mathbf{x})}{\partial x_n} \dot{x}_n = 0$\\
+Erweiterung des Satzes von Hartmann/Grobmann: Jacobimatrix hat nur imaginäre Eigenwerte und Schaltung ist konservativ $\Leftrightarrow$ GGP ist Wirbelpunkt
+\subsection{Oszillatoren}
+Schaltung mit periodischem Verlauf der Zustandsgrößen\\
+Voraussetzung: nichtlinear, nur ein Fixpunkt (instabil)\\
+\textbf{Van der Pol-Oszillator:}\\
+\parbox{.5\linewidth}{\includegraphics[width=\linewidth]{img/van-der-pol}}
+\parbox{.5\linewidth}{\includegraphics[width=\linewidth]{img/fast-harmonischer-oszillator}}\\
+\textbf{Relaxationsoszillator:}\\
+\includegraphics[width=.5\linewidth]{img/relaxationsoszillator}
+\includegraphics[width=.5\linewidth]{img/relaxationsoszillator-schaltung}
+\section{Dynamische Schaltungen beliebigen Grades}
+\subsection{Verallgemeinerte Zustandsgleichungen}
+$\frac{d}{dt} \begin{bmatrix}\mathbf{0} & \mathbf{0}\\\mathbf{0} & \mathbf{0}\\\mathbf{M}_1 & \mathbf{N}_1\end{bmatrix}\begin{bmatrix}\mathbf{u}\\\mathbf{i}\end{bmatrix} = - \begin{bmatrix} \mathbf{B} & \mathbf{0} \\ \mathbf{0} & \mathbf{A} \\ \mathbf{M}_0 & \mathbf{N}_0\end{bmatrix}\begin{bmatrix}\mathbf{u}\\\mathbf{i}\end{bmatrix} + \begin{bmatrix}\mathbf{0}\\\mathbf{0}\\\mathbf{e}\end{bmatrix}$\\
+$\mathbf{M}_1, \mathbf{N}_1$: Elementgleichungen der reaktiven Elemente\\
+$\mathbf{M}_0, \mathbf{N}_0$: Elementgleichungen aus Tableau\\
+$\mathbf{B}$: KVL, $\mathbf{A}$: KCL\\
+($e = 0 \Leftrightarrow$ keine Quellen enthalten)
     \section{Komplexe Wechselstromrechnung}
     \textbf{Vorraussetzung:} lineares, eingeschwungenes System mit sinusförmiger Erregung $x(t) = A_m \cdot \cos(\omega t + \phi)$\\
     \sectionbox{

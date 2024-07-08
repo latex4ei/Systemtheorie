@@ -1,6 +1,7 @@
 build/
 
-/*.pdf
+*.pdf
+!img/*.pdf
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
